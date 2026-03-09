@@ -24,11 +24,17 @@ public class Rekursion {
 
         for (int i = 0; i < werte.length; i++){
             for (int j = 0; j < werte[i].length; j++){
-                checkField(i,j);
-                if (maximumLokal > maximumTotal){
-                    maximumTotal = maximumLokal;
+
+                if (werte[i][j] && !werteCheck[i][j])
+                {
+                    checkField(i,j);
+                    System.out.println("Ausgabe: " + i + " " + j + " MaximumLokal : " + maximumLokal);
+                    if (maximumLokal > maximumTotal){
+                        maximumTotal = maximumLokal;
+                    }
+                    maximumLokal = 0;
                 }
-                maximumLokal = 0;
+
             }
         }
         System.out.println(maximumTotal);
@@ -36,20 +42,22 @@ public class Rekursion {
 
     public static void checkField(int x, int y) throws RekursionException{
         try {
+            boolean w = werte[x][y];
+            boolean wc = werteCheck[x][y];
             if (werte[x][y] && !werteCheck[x][y]){
                 werteCheck[x][y] = true;
                 maximumLokal += 1;
                 if (x > 0){
-                    checkField(x - 1, 0); //Links
+                    checkField(x - 1, y); //Links --oben
                 }
                 if (x < werte.length - 1){
-                    checkField(x+1, 0); //Rechts
+                    checkField(x + 1, y); //Rechts
                 }
                 if (y > 0){
-                    checkField(0,y-1); //Unten
+                    checkField(x,y - 1); //Rauf
                 }
                 if (y < werte[0].length - 1){
-                    checkField(0,y+1); //Oben
+                    checkField(x,y + 1); //Runter
                 }
             } else {
                 werteCheck[x][y] = true;
