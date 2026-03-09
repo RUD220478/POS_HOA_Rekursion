@@ -37,6 +37,7 @@ public class POSTHEORIE {
         return -99;
     }
 
+    //yo
     public static void main(String[] arg){
         zusammenhang(werte);
     }
