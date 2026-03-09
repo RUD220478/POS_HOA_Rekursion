@@ -1,5 +1,6 @@
 public class POSTHEORIE {
 
+
     private static boolean[][] werte = {
             {false,false,false,true,true,true,false,false,true,true,false,false},
             {false,true,true,true,false,true,true,true,true,false,false,false},
